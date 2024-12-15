@@ -19,7 +19,22 @@ public class TestDemo {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://saucelabs.com/request-demo");
+        //driver.get("https://saucelabs.com/request-demo");
+        driver.get("https://demo.guru99.com/test/upload/");
+        //duong dan can tai tep len
+        String filePath = "C:/Users/DELL/Downloads/07_Inheritance_Polymorphism.pdf";
+        //tim phan tu input type = "file" va gui duong dan tep
+        WebElement uploadFile = driver.findElement(By.id("uploadfile_0"));
+        uploadFile.sendKeys(filePath);
+        //dong y voi cacdieu khoan
+        WebElement termsCheckbox = driver.findElement(By.id("terms"));
+        termsCheckbox.click();
+        //nhap vao nut upload
+        WebElement uploadButton = driver.findElement(By.id("submitbutton"));
+        uploadButton.click();
+        Thread.sleep(3000);
+
+
         String getUrl = driver.getCurrentUrl();
         System.out.println("Duong dan web la: " + getUrl);
         // Tạo instance của TestDemo
@@ -43,6 +58,9 @@ public class TestDemo {
         }
         WebElement email = driver.findElement(By.cssSelector("input[name='Email']"));
         email.sendKeys("test@example.com");
+
+
+
         testDemo.requestDemoPageUI.findEmailInput().sendKeys("maithihoa09092003@gmail.com");
         testDemo.requestDemoPageUI.findFirstNameInput().sendKeys("Hoa");
         testDemo.requestDemoPageUI.findLastNameInput().sendKeys("Mai Thi");
